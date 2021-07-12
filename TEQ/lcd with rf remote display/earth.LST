@@ -1,0 +1,178 @@
+C51 COMPILER V9.01   EARTH                                                                 03/13/2018 18:50:12 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE EARTH
+OBJECT MODULE PLACED IN earth.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE earth.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h> //including sfr registers for ports of the controller
+   2          #include<lcd.h> // INCLUDE HEADER FILE
+   3          
+   4          //LCD Module Connections
+   5          sbit RS = P0^0;
+   6          sbit EN = P0^1;
+   7          sbit D0 = P3^0;
+   8          sbit D1 = P3^1;
+   9          sbit D2 = P3^2;
+  10          sbit D3 = P3^3;
+  11          sbit D4 = P3^4;
+  12          sbit D5 = P3^5;
+  13          sbit D6 = P3^6;
+  14          sbit D7 = P3^7;
+  15          
+  16          sbit p = P2^0;
+  17          sbit q = P2^1;
+  18          sbit r = P2^2;
+  19          sbit s = P2^3;
+  20          sbit t = P2^4;
+  21          sbit u = P2^5;
+  22          
+  23          
+  24          
+  25          //excellometer connection
+  26          sbit a=P1^0;                      // FOR X-AXIS VIBRATION
+  27          sbit b=P1^1;                      // FOR Y-AXIS VIBRATION
+  28          sbit c=P1^2;                      // FOR Z-AXIS VIBRATION
+  29          
+  30          //End LCD Module Connections
+  31          void Delay(int a)
+  32          {
+  33   1        int j;
+  34   1        int i;
+  35   1        for(i=0;i<a;i++)
+  36   1        {
+  37   2          for(j=0;j<100;j++)
+  38   2          {
+  39   3          }
+  40   2        }
+  41   1      }
+  42          void main()
+  43          {
+  44   1        int i;
+  45   1        
+  46   1        Lcd8_Init();
+  47   1        a=b=c=0;
+  48   1        while(1)
+  49   1        {
+  50   2        p=q=r=s=t=u=0;
+  51   2        if (a==0 && b==0 && c==0)
+  52   2      {
+  53   3      p=q=r=s=t=u=0;
+  54   3          Lcd8_Set_Cursor(1,0);
+  55   3          Lcd8_Write_String("ALL SOURCE OFF");
+C51 COMPILER V9.01   EARTH                                                                 03/13/2018 18:50:12 PAGE 2   
+
+  56   3              Lcd8_Set_Cursor(2,0);
+  57   3          Lcd8_Write_String("LOAD OFF");
+  58   3          Delay(1000);
+  59   3          Lcd8_Clear();
+  60   3              Delay(1000);    
+  61   3      }
+  62   2      else if (a==1 && b==1 && c==1)
+  63   2      {
+  64   3      p=q=1;
+  65   3      r=s=t=u=0;
+  66   3              Lcd8_Set_Cursor(1,0);
+  67   3          Lcd8_Write_String("HELLO LOAD WORK");
+  68   3              Lcd8_Set_Cursor(2,0);
+  69   3          Lcd8_Write_String("ON SUN");
+  70   3          Delay(1000);
+  71   3          Lcd8_Clear();
+  72   3              Delay(1000);
+  73   3      }
+  74   2      else if (a==1 && b==0 && c==1)
+  75   2      {
+  76   3      p=q=1;
+  77   3      r=s=t=u=0;
+  78   3              Lcd8_Set_Cursor(1,0);
+  79   3          Lcd8_Write_String("HELLO LOAD WORK");
+  80   3              Lcd8_Set_Cursor(2,0);
+  81   3          Lcd8_Write_String("ON SUN");
+  82   3          Delay(1000);
+  83   3          Lcd8_Clear();
+  84   3              Delay(1000);
+  85   3      }
+  86   2      else if (a==1 && b==1 && c==0)
+  87   2      {
+  88   3      p=q=1;
+  89   3      r=s=t=u=0;
+  90   3              Lcd8_Set_Cursor(1,0);
+  91   3          Lcd8_Write_String("HELLO LOAD WORK");
+  92   3              Lcd8_Set_Cursor(2,0);
+  93   3          Lcd8_Write_String("ON SUN");
+  94   3          Delay(1000);
+  95   3          Lcd8_Clear();
+  96   3              Delay(1000);
+  97   3      }
+  98   2      else if (a==1 && b==0 && c==0)
+  99   2      {
+ 100   3      p=q=1;
+ 101   3      r=s=t=u=0;
+ 102   3              Lcd8_Set_Cursor(1,0);
+ 103   3          Lcd8_Write_String("HELLO LOAD WORK");
+ 104   3              Lcd8_Set_Cursor(2,0);
+ 105   3          Lcd8_Write_String("ON SUN");
+ 106   3          Delay(1000);
+ 107   3          Lcd8_Clear();
+ 108   3              Delay(1000);
+ 109   3      }
+ 110   2      else if (a==0 && b==1 && c==1)
+ 111   2      {
+ 112   3      r=s=1;
+ 113   3      p=q=t=u=0;
+ 114   3              Lcd8_Set_Cursor(1,0);
+ 115   3          Lcd8_Write_String("HELLO LOAD WORK");
+ 116   3              Lcd8_Set_Cursor(2,0);
+ 117   3          Lcd8_Write_String("ON WIND");
+C51 COMPILER V9.01   EARTH                                                                 03/13/2018 18:50:12 PAGE 3   
+
+ 118   3          Delay(1000);
+ 119   3          Lcd8_Clear();
+ 120   3              Delay(1000);
+ 121   3      }
+ 122   2      
+ 123   2      else if (a==0 && b==1 && c==0)
+ 124   2      {
+ 125   3      r=s=1;
+ 126   3      p=q=t=u=0;
+ 127   3              Lcd8_Set_Cursor(1,0);
+ 128   3          Lcd8_Write_String("HELLO LOAD WORK");
+ 129   3              Lcd8_Set_Cursor(2,0);
+ 130   3          Lcd8_Write_String("ON WIND");
+ 131   3          Delay(1000);
+ 132   3          Lcd8_Clear();
+ 133   3              Delay(1000);
+ 134   3      }
+ 135   2      else if (a==0 && b==0 && c==1)
+ 136   2      {
+ 137   3      t=u=1;
+ 138   3      p=q=r=s=0;
+ 139   3          Lcd8_Set_Cursor(1,0);
+ 140   3          Lcd8_Write_String("HELLO LOAD WORK");
+ 141   3              Lcd8_Set_Cursor(2,0);
+ 142   3          Lcd8_Write_String("ON GRID");
+ 143   3          Delay(1000);
+ 144   3          Lcd8_Clear();
+ 145   3              Delay(1000);
+ 146   3      }
+ 147   2        }
+ 148   1      }
+*** WARNING C280 IN LINE 44 OF EARTH.C: 'i': unreferenced local variable
+*** WARNING C290 IN LINE 84 OF EARTH.C: missing return value
+*** WARNING C290 IN LINE 176 OF EARTH.C: missing return value
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    986    ----
+   CONSTANT SIZE    =     63    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      17
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  3 WARNING(S),  0 ERROR(S)

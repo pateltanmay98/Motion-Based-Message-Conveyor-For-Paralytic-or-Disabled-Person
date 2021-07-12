@@ -1,0 +1,148 @@
+#include<reg52.h> //including sfr registers for ports of the controller
+#include<lcd.h> // INCLUDE HEADER FILE
+
+//LCD Module Connections
+sbit RS = P0^0;
+sbit EN = P0^1;
+sbit D0 = P3^0;
+sbit D1 = P3^1;
+sbit D2 = P3^2;
+sbit D3 = P3^3;
+sbit D4 = P3^4;
+sbit D5 = P3^5;
+sbit D6 = P3^6;
+sbit D7 = P3^7;
+
+sbit p = P2^0;
+sbit q = P2^1;
+sbit r = P2^2;
+sbit s = P2^3;
+sbit t = P2^4;
+sbit u = P2^5;
+
+
+
+//excellometer connection
+sbit a=P1^0;			  // FOR X-AXIS VIBRATION
+sbit b=P1^1;			  // FOR Y-AXIS VIBRATION
+sbit c=P1^2;			  // FOR Z-AXIS VIBRATION
+
+//End LCD Module Connections
+void Delay(int a)
+{
+  int j;
+  int i;
+  for(i=0;i<a;i++)
+  {
+    for(j=0;j<100;j++)
+    {
+    }
+  }
+}
+void main()
+{
+  int i;
+  
+  Lcd8_Init();
+  a=b=c=0;
+  while(1)
+  {
+  p=q=r=s=t=u=0;
+  if (a==0 && b==0 && c==0)
+{
+p=q=r=s=t=u=0;
+    Lcd8_Set_Cursor(1,0);
+    Lcd8_Write_String("ALL SOURCE OFF");
+	Lcd8_Set_Cursor(2,0);
+    Lcd8_Write_String("LOAD OFF");
+    Delay(1000);
+    Lcd8_Clear();
+	Delay(1000);	
+}
+else if (a==1 && b==1 && c==1)
+{
+p=q=1;
+r=s=t=u=0;
+	Lcd8_Set_Cursor(1,0);
+    Lcd8_Write_String("HELLO LOAD WORK");
+	Lcd8_Set_Cursor(2,0);
+    Lcd8_Write_String("ON SUN");
+    Delay(1000);
+    Lcd8_Clear();
+	Delay(1000);
+}
+else if (a==1 && b==0 && c==1)
+{
+p=q=1;
+r=s=t=u=0;
+	Lcd8_Set_Cursor(1,0);
+    Lcd8_Write_String("HELLO LOAD WORK");
+	Lcd8_Set_Cursor(2,0);
+    Lcd8_Write_String("ON SUN");
+    Delay(1000);
+    Lcd8_Clear();
+	Delay(1000);
+}
+else if (a==1 && b==1 && c==0)
+{
+p=q=1;
+r=s=t=u=0;
+	Lcd8_Set_Cursor(1,0);
+    Lcd8_Write_String("HELLO LOAD WORK");
+	Lcd8_Set_Cursor(2,0);
+    Lcd8_Write_String("ON SUN");
+    Delay(1000);
+    Lcd8_Clear();
+	Delay(1000);
+}
+else if (a==1 && b==0 && c==0)
+{
+p=q=1;
+r=s=t=u=0;
+	Lcd8_Set_Cursor(1,0);
+    Lcd8_Write_String("HELLO LOAD WORK");
+	Lcd8_Set_Cursor(2,0);
+    Lcd8_Write_String("ON SUN");
+    Delay(1000);
+    Lcd8_Clear();
+	Delay(1000);
+}
+else if (a==0 && b==1 && c==1)
+{
+r=s=1;
+p=q=t=u=0;
+   	Lcd8_Set_Cursor(1,0);
+    Lcd8_Write_String("HELLO LOAD WORK");
+	Lcd8_Set_Cursor(2,0);
+    Lcd8_Write_String("ON WIND");
+    Delay(1000);
+    Lcd8_Clear();
+	Delay(1000);
+}
+
+else if (a==0 && b==1 && c==0)
+{
+r=s=1;
+p=q=t=u=0;
+   	Lcd8_Set_Cursor(1,0);
+    Lcd8_Write_String("HELLO LOAD WORK");
+	Lcd8_Set_Cursor(2,0);
+    Lcd8_Write_String("ON WIND");
+    Delay(1000);
+    Lcd8_Clear();
+	Delay(1000);
+}
+else if (a==0 && b==0 && c==1)
+{
+t=u=1;
+p=q=r=s=0;
+    Lcd8_Set_Cursor(1,0);
+    Lcd8_Write_String("HELLO LOAD WORK");
+	Lcd8_Set_Cursor(2,0);
+    Lcd8_Write_String("ON GRID");
+    Delay(1000);
+    Lcd8_Clear();
+	Delay(1000);
+}
+  }
+}
